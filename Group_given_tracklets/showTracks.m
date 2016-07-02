@@ -24,7 +24,12 @@ for i = 1:length(tracks)
         idx = frame - tracks(i).ti + 1;
 
         col = cmap(mod(i*10, 64) + 1, :);
-        rectangle('Position', tracks(i).bbs(:, idx), 'EdgeColor', col, 'LineWidth', 3);
+        ttt = tracks(i).bbs(:, idx);
+        rectangle('Position', ttt, 'EdgeColor', col, 'LineWidth', 3);
+        
+        str = num2str(i);
+        pad = 7;
+        text(ttt(1,1),ttt(2,1)+pad,str,'Color',col);
     end
 end
 

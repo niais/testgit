@@ -1,10 +1,10 @@
-function  STTracks(tracklet)
+function [coordinary,mat_track] =  STTracks(tracklet,num_frame)
 %% 
-% mat_track = zeros(length(tracklet),num_frame);
+mat_track = zeros(length(tracklet),num_frame);
 coordinary = {};
 num_person = length(tracklet);
 for im = 1:num_person
-%     mat_track(im,tracklet(im).ti:tracklet(im).te) = 1;
+    mat_track(im,tracklet(im).ti:tracklet(im).te) = 1;
     axis_z = tracklet(im).ti:tracklet(im).te;
 %     tmp_axis = zeros(3,length(axis_z));
     tmp_bbs = tracklet(im).bbs;
@@ -15,10 +15,10 @@ for im = 1:num_person
     
     coordinary = [coordinary tmp_axis];
     
-    for i = 1:length(axis_z)
-        plot3(tmp_axis(1,i),tmp_axis(2,i),tmp_axis(3,i),'ro'); hold on;
-%         mesh(tmp_axis);hold on;
-    end
+%     for i = 1:length(axis_z)
+%         plot3(tmp_axis(1,i),tmp_axis(2,i),tmp_axis(3,i),'ro'); hold on;
+% %         mesh(tmp_axis);hold on;
+%     end
 end
 
 
